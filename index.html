@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barrio Chapultepec</title>
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --primary-dark: #0b3559;
+      --accent: #d4af37;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #dbe3ec;
+      --shadow: 0 12px 30px rgba(15, 76, 129, 0.10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    .topbar {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 20px rgba(0,0,0,.10);
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: background .2s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(255,255,255,.16);
+    }
+
+    .hero {
+      background: linear-gradient(rgba(15, 76, 129, 0.78), rgba(11, 53, 89, 0.78)), url('https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: white;
+      padding: 90px 24px 80px;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: 2.6rem;
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,.94);
+      margin: 0 0 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .15s ease, opacity .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.16);
+      color: white;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px 72px;
+    }
+
+    section {
+      margin-top: 34px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin: 0 0 8px;
+      color: var(--primary-dark);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 76, 129, 0.10);
+      color: var(--primary-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .announcement {
+      border-left: 5px solid var(--accent);
+    }
+
+    .calendar-item,
+    .leader-item,
+    .resource-item,
+    .directory-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .calendar-item:last-child,
+    .leader-item:last-child,
+    .resource-item:last-child,
+    .directory-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .calendar-date {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    .ministry-box {
+      background: linear-gradient(135deg, rgba(15,76,129,.06), rgba(212,175,55,.10));
+    }
+
+    .org-card {
+      min-height: 180px;
+    }
+
+    .org-card a,
+    .resource-item a,
+    .leader-item a,
+    .directory-item a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .org-card a:hover,
+    .resource-item a:hover,
+    .leader-item a:hover,
+    .directory-item a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+    }
+
+    .contact-box h3,
+    .contact-box p,
+    .contact-box a {
+      color: white;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 26px 18px 42px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .span-3, .span-4, .span-6, .span-8 { grid-column: span 12; }
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Barrio Chapultepec</div>
+      <nav class="nav">
+        <a href="#anuncios">Anuncios</a>
+        <a href="#calendario">Calendario</a>
+        <a href="#organizaciones">Organizaciones</a>
+        <a href="#ministracion">Ministracion</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#directorio">Directorio</a>
+        <a href="#lideres">Lideres</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Portal del Barrio Chapultepec</h1>
+      <p>Un espacio para compartir anuncios, calendario, recursos espirituales, directorio y acceso rapido a las organizaciones del barrio.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#anuncios">Ver anuncios</a>
+        <a class="btn btn-secondary" href="#organizaciones">Ir a organizaciones</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="anuncios">
+      <h2 class="section-title">Anuncios del barrio y del obispado</h2>
+      <p class="section-subtitle">Aqui puedes actualizar avisos importantes de la semana.</p>
+      <div class="grid">
+        <div class="card announcement span-4">
+          <div class="tag">Obispado</div>
+          <h3>Reunion de consejo de barrio</h3>
+          <p>Sabado a las 7:30 a.m. en el edificio. Favor de llegar puntuales y revisar los pendientes de cada organizacion.</p>
+        </div>
+        <div class="card announcement span-4">
+          <div class="tag">Barrio</div>
+          <h3>Noche de hogar de barrio</h3>
+          <p>Viernes a las 7:00 p.m. Tema de fortalecimiento familiar y convivencia. Se invita a todas las familias.</p>
+        </div>
+        <div class="card announcement span-4">
+          <div class="tag">Interes general</div>
+          <h3>Discurso recomendado</h3>
+          <p>Agrega aqui un discurso reciente, una escritura de la semana o un mensaje edificante para los miembros.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendario">
+      <h2 class="section-title">Calendario</h2>
+      <p class="section-subtitle">Actividades, reuniones y eventos del barrio.</p>
+      <div class="grid">
+        <div class="card span-8">
+          <div class="calendar-item">
+            <div class="calendar-date">Domingo 15 de marzo, 9:00 a.m.</div>
+            <div>Reunion sacramental</div>
+          </div>
+          <div class="calendar-item">
+            <div class="calendar-date">Miercoles 18 de marzo, 7:00 p.m.</div>
+            <div>Actividad de Hombres Jovenes y Mujeres Jovenes</div>
+          </div>
+          <div class="calendar-item">
+            <div class="calendar-date">Jueves 19 de marzo, 7:30 p.m.</div>
+            <div>Reunion de Sociedad de Socorro</div>
+          </div>
+          <div class="calendar-item">
+            <div class="calendar-date">Sabado 21 de marzo, 10:00 a.m.</div>
+            <div>Actividad de servicio del barrio</div>
+          </div>
+        </div>
+        <div class="card span-4">
+          <h3>Como actualizar</h3>
+          <p>Puedes editar estas fechas directamente en el codigo o despues conectar esta seccion a un Google Calendar embebido para que sea mas facil mantenerla al dia.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="organizaciones">
+      <h2 class="section-title">Organizaciones del barrio</h2>
+      <p class="section-subtitle">Acceso rapido por organizacion.</p>
+      <div class="grid">
+        <div class="card org-card span-3">
+          <h3>Cuorum de Elderes</h3>
+          <p>Anuncios, ministracion, reuniones, asignaciones y recursos del cuorum.</p>
+        </div>
+        <div class="card org-card span-3">
+          <h3>Sociedad de Socorro</h3>
+          <p>Mensajes, actividades, necesidades de apoyo y comunicacion de la organizacion.</p>
+        </div>
+        <div class="card org-card span-3">
+          <h3>Hombres Jovenes</h3>
+          <p>Actividades semanales, metas, presidencia y materiales de apoyo.</p>
+        </div>
+        <div class="card org-card span-3">
+          <h3>Mujeres Jovenes</h3>
+          <p>Calendario, temas, actividades y comunicacion para las jovencitas y lideres.</p>
+        </div>
+        <div class="card org-card span-3">
+          <h3>Primaria</h3>
+          <p>Programas, actividades, presidencia y recursos para ninos y padres.</p>
+        </div>
+        <div class="card org-card span-3">
+          <h3>Escuela Dominical</h3>
+          <p>Temas, clases, maestros y materiales de estudio de la semana.</p>
+        </div>
+        <div class="card org-card span-3">
+          <h3>Obispado</h3>
+          <p>Mensajes, lineamientos y avisos generales del barrio.</p>
+        </div>
+        <div class="card org-card span-3">
+          <h3>Jovenes Adultos</h3>
+          <p>Espacio opcional para actividades, servicio y comunicacion adicional.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ministracion">
+      <h2 class="section-title">Ministracion</h2>
+      <p class="section-subtitle">Seguimiento general y accesos rapidos para coordinacion.</p>
+      <div class="grid">
+        <div class="card ministry-box span-6">
+          <h3>Cuorum de Elderes</h3>
+          <p>Espacio para colocar enlaces a PDFs por distrito, parejas de ministracion, familias asignadas o formularios de seguimiento.</p>
+        </div>
+        <div class="card ministry-box span-6">
+          <h3>Sociedad de Socorro</h3>
+          <p>Espacio para organizar companerismos, familias asignadas, necesidades y reportes mensuales.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="recursos">
+      <h2 class="section-title">Recursos</h2>
+      <p class="section-subtitle">Materiales utiles para miembros y lideres.</p>
+      <div class="grid">
+        <div class="card span-6">
+          <div class="resource-item">
+            <a href="https://www.churchofjesuschrist.org" target="_blank">Sitio oficial de La Iglesia de Jesucristo de los Santos de los Ultimos Dias</a>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.churchofjesuschrist.org/study/general-conference" target="_blank">Discursos de conferencia general</a>
+          </div>
+          <div class="resource-item">
+            <a href="https://www.churchofjesuschrist.org/study/scriptures" target="_blank">Escrituras y biblioteca del Evangelio</a>
+          </div>
+        </div>
+        <div class="card span-6">
+          <div class="resource-item">
+            <a href="#">Formulario de necesidades o servicio</a>
+          </div>
+          <div class="resource-item">
+            <a href="#">Horario de limpieza del edificio</a>
+          </div>
+          <div class="resource-item">
+            <a href="#">Materiales para clases y actividades</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="directorio">
+      <h2 class="section-title">Directorio</h2>
+      <p class="section-subtitle">Puedes usar esta seccion para publicar contactos autorizados por organizacion.</p>
+      <div class="grid">
+        <div class="card span-6">
+          <div class="directory-item"><strong>Obispo</strong><br>Nombre del obispo<br>Telefono: 81 0000 0000</div>
+          <div class="directory-item"><strong>Presidente del Cuorum de Elderes</strong><br>Nombre del presidente<br>Telefono: 81 0000 0000</div>
+          <div class="directory-item"><strong>Presidenta de Sociedad de Socorro</strong><br>Nombre de la presidenta<br>Telefono: 81 0000 0000</div>
+        </div>
+        <div class="card span-6">
+          <div class="directory-item"><strong>Presidencia de Primaria</strong><br>Nombre de la presidenta<br>Telefono: 81 0000 0000</div>
+          <div class="directory-item"><strong>Presidencia de Hombres Jovenes</strong><br>Nombre del presidente<br>Telefono: 81 0000 0000</div>
+          <div class="directory-item"><strong>Presidencia de Mujeres Jovenes</strong><br>Nombre de la presidenta<br>Telefono: 81 0000 0000</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lideres">
+      <h2 class="section-title">Contacto con lideres</h2>
+      <p class="section-subtitle">Canales de apoyo y comunicacion del barrio.</p>
+      <div class="grid">
+        <div class="card contact-box span-6">
+          <h3>Contacto principal</h3>
+          <p>Correo del barrio: barriochapultepec@email.com</p>
+          <p>WhatsApp de avisos: 81 0000 0000</p>
+          <p>Horario de atencion: Domingo y entre semana segun necesidad.</p>
+        </div>
+        <div class="card span-6">
+          <h3>Nota importante</h3>
+          <p>Antes de publicar informacion personal o directorios, conviene validar autorizacion y cuidar la privacidad de los miembros. Tambien puedes poner el directorio en una version interna privada y dejar esta pagina publica solo con informacion general.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Portal del Barrio Chapultepec. Puedes personalizar colores, textos, imagenes y secciones segun las necesidades del barrio.
+  </footer>
+</body>
+</html>
