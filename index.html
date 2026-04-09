@@ -7,13 +7,13 @@
   <style>
     :root {
       --primary: #0f4c81;
-      --primary-dark: #0b3559;
-      --accent: #d4af37;
-      --bg: #f5f7fa;
+      --primary-dark: #0a2f57;
+      --accent: #d8b36a;
+      --bg: #f4f7fb;
       --card: #ffffff;
-      --text: #1e293b;
-      --muted: #64748b;
-      --border: #dbe3ec;
+      --text: #1c2b3a;
+      --muted: #61758d;
+      --border: #d9e4ef;
       --shadow: 0 12px 30px rgba(15, 76, 129, 0.10);
       --radius: 18px;
     }
@@ -31,13 +31,15 @@
     html { scroll-behavior: smooth; }
 
     .topbar {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
+      background:
+        linear-gradient(125deg, rgba(255,255,255,.06) 0 18%, transparent 18% 100%),
+        linear-gradient(145deg, rgba(7, 42, 78, .92), rgba(15, 76, 129, .98) 58%, rgba(8, 58, 104, .98));
+      color: #f8fbff;
       padding: 18px 24px;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 6px 20px rgba(0,0,0,.10);
+      box-shadow: 0 8px 24px rgba(7, 42, 78, .22);
     }
 
     .topbar-inner {
@@ -63,7 +65,7 @@
     }
 
     .nav a {
-      color: white;
+      color: #f8fbff;
       text-decoration: none;
       font-size: 0.95rem;
       padding: 8px 12px;
@@ -72,18 +74,29 @@
     }
 
     .nav a:hover {
-      background: rgba(255,255,255,.16);
+      background: rgba(248,251,255,.14);
     }
 
     .hero {
-      background: linear-gradient(rgba(15, 76, 129, 0.78), rgba(11, 53, 89, 0.78)), url('https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1600&q=80') center/cover;
-      color: white;
-      padding: 90px 24px 80px;
+      background:
+        linear-gradient(125deg, rgba(255,255,255,.05) 0 13%, transparent 13% 100%),
+        linear-gradient(305deg, rgba(255,255,255,.04) 0 22%, transparent 22% 100%),
+        linear-gradient(145deg, #0a2f57, #0f4c81 52%, #0b3f70);
+      color: #f8fbff;
+      padding: 72px 24px 64px;
     }
 
     .hero-inner {
       max-width: 1200px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 640px;
     }
 
     .hero h1 {
@@ -92,9 +105,8 @@
     }
 
     .hero p {
-      max-width: 760px;
       font-size: 1.08rem;
-      color: rgba(255,255,255,.94);
+      color: rgba(248,251,255,.88);
       margin: 0 0 24px;
     }
 
@@ -102,6 +114,66 @@
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+    }
+
+    .hero-figure {
+      margin: 0;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 24px 50px rgba(3, 26, 49, .24);
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #dfe8f1;
+    }
+
+    .identity-band {
+      max-width: 1200px;
+      margin: -22px auto 0;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .identity-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .identity-kicker {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .identity-card h2 {
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+    }
+
+    .identity-card p {
+      margin: 0;
+      color: var(--muted);
     }
 
     .btn {
@@ -121,9 +193,9 @@
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,.16);
-      color: white;
-      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(248,251,255,.10);
+      color: #f8fbff;
+      border: 1px solid rgba(248,251,255,.22);
     }
 
     .container {
@@ -224,6 +296,7 @@
     }
 
     .org-card a,
+    .announcement a,
     .resource-item a,
     .leader-item a,
     .directory-item a {
@@ -233,6 +306,7 @@
     }
 
     .org-card a:hover,
+    .announcement a:hover,
     .resource-item a:hover,
     .leader-item a:hover,
     .directory-item a:hover {
@@ -295,7 +369,10 @@
 
     @media (max-width: 900px) {
       .span-3, .span-4, .span-6, .span-8 { grid-column: span 12; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-copy { max-width: none; }
       .hero h1 { font-size: 2rem; }
+      .identity-band { margin-top: 20px; }
     }
   </style>
 </head>
@@ -311,19 +388,35 @@
         <a href="#recursos">Recursos</a>
         <a href="#redes">Redes</a>
         <a href="#directorio">Directorio</a>
-        <a href="#lideres">Lideres</a>
+        <a href="#lideres">Contacto</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero-inner">
-      <h1>Portal del Barrio Chapultepec</h1>
-      <p>Un espacio para compartir anuncios, calendario, recursos espirituales, directorio y acceso rapido a las organizaciones del barrio.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#anuncios">Ver anuncios</a>
-        <a class="btn btn-secondary" href="#organizaciones">Ir a organizaciones</a>
+      <div class="hero-copy">
+        <h1>Barrio Chapultepec</h1>
+        <p>Un espacio para compartir anuncios, calendario, recursos espirituales y acceso rapido a la informacion general del barrio.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#anuncios">Ver anuncios</a>
+          <a class="btn btn-secondary" href="#calendario">Ver calendario</a>
+        </div>
       </div>
+      <figure class="hero-figure">
+        <img src="assets/templo-principal.jpg" alt="Imagen principal del Barrio Chapultepec" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="identity-band">
+    <div class="identity-card">
+      <div>
+        <span class="identity-kicker">Referencia oficial</span>
+        <h2>La Iglesia de Jesucristo de los Santos de los Ultimos Dias</h2>
+        <p>Acceso directo al sitio oficial de la Iglesia para recursos, mensajes y contenido institucional.</p>
+      </div>
+      <a class="btn btn-primary" href="https://www.churchofjesuschrist.org/?lang=spa" target="_blank" rel="noreferrer">Sitio oficial</a>
     </div>
   </section>
 
@@ -335,17 +428,17 @@
         <div class="card announcement span-4">
           <div class="tag">Obispado</div>
           <h3>Reunion de consejo de barrio</h3>
-          <p>Sabado a las 7:30 a.m. en el edificio. Favor de llegar puntuales y revisar los pendientes de cada organizacion.</p>
+          <p>Domingos a las 11:05 a.m. en el edificio. Favor de llegar puntuales y revisar los pendientes de cada organizacion.</p>
         </div>
         <div class="card announcement span-4">
           <div class="tag">Barrio</div>
           <h3>Noche de hogar de barrio</h3>
-          <p>Viernes a las 7:00 p.m. Tema de fortalecimiento familiar y convivencia. Se invita a todas las familias.</p>
+          <p>Tercer viernes de cada mes. En abril de 2026 corresponde el viernes 17 de abril. Se invita a todas las familias a participar.</p>
         </div>
         <div class="card announcement span-4">
           <div class="tag">Interes general</div>
           <h3>Discurso recomendado</h3>
-          <p>Agrega aqui un discurso reciente, una escritura de la semana o un mensaje edificante para los miembros.</p>
+          <p>Discurso mas reciente del presidente Dieter F. Uchtdorf: <a href="https://www.churchofjesuschrist.org/study/general-conference/2026/04/41uchtdorf?lang=spa" target="_blank" rel="noreferrer">"Encuentro en la tumba vacia"</a>.</p>
         </div>
       </div>
     </section>
@@ -439,7 +532,7 @@
       <div class="grid">
         <div class="card span-6">
           <div class="resource-item">
-            <a href="https://www.churchofjesuschrist.org" target="_blank">Sitio oficial de La Iglesia de Jesucristo de los Santos de los Ultimos Dias</a>
+            <a href="https://www.churchofjesuschrist.org/study/manual/general-handbook?lang=spa" target="_blank">Manual General</a>
           </div>
           <div class="resource-item">
             <a href="https://www.churchofjesuschrist.org/study/general-conference" target="_blank">Discursos de conferencia general</a>
@@ -464,17 +557,18 @@
 
     <section id="directorio">
       <h2 class="section-title">Directorio</h2>
-      <p class="section-subtitle">Puedes usar esta seccion para publicar contactos autorizados por organizacion.</p>
+      <p class="section-subtitle">Espacio para nombres y contactos autorizados por organizacion.</p>
       <div class="grid">
         <div class="card span-6">
-          <div class="directory-item"><strong>Obispo</strong><br>Nombre del obispo<br>Telefono: 81 0000 0000</div>
-          <div class="directory-item"><strong>Presidente del Cuorum de Elderes</strong><br>Nombre del presidente<br>Telefono: 81 0000 0000</div>
-          <div class="directory-item"><strong>Presidenta de Sociedad de Socorro</strong><br>Nombre de la presidenta<br>Telefono: 81 0000 0000</div>
+          <div class="directory-item"><strong>Obispo</strong><br>Jesus Mario Paura Sanchez<br>Telefono: 81 1012 8389</div>
+          <div class="directory-item"><strong>Presidente del Cuorum de Elderes</strong><br>Israel Hernandez Herrera<br>Telefono: 55 1268 3136</div>
+          <div class="directory-item"><strong>Presidenta de Sociedad de Socorro</strong><br>Areli Gonzalez Hernandez<br>Telefono: 81 2017 0467</div>
         </div>
         <div class="card span-6">
-          <div class="directory-item"><strong>Presidencia de Primaria</strong><br>Nombre de la presidenta<br>Telefono: 81 0000 0000</div>
-          <div class="directory-item"><strong>Presidencia de Hombres Jovenes</strong><br>Nombre del presidente<br>Telefono: 81 0000 0000</div>
-          <div class="directory-item"><strong>Presidencia de Mujeres Jovenes</strong><br>Nombre de la presidenta<br>Telefono: 81 0000 0000</div>
+          <div class="directory-item"><strong>Presidencia de Primaria</strong><br>Maribel Ramirez Calderon<br>Telefono: 81 8683 5530</div>
+          <div class="directory-item"><strong>Escuela Dominical</strong><br>Efrain Osuna Ruiz<br>Telefono: 81 2600 5323</div>
+          <div class="directory-item"><strong>Presidencia de Hombres Jovenes</strong><br>Jesus Mario Paura Sanchez<br>Telefono: 81 1012 8389</div>
+          <div class="directory-item"><strong>Presidencia de Mujeres Jovenes</strong><br>Eva Zapata Estrada<br>Telefono: 83 3234 8703</div>
         </div>
       </div>
     </section>
@@ -511,8 +605,8 @@
     </section>
 
     <section id="lideres">
-      <h2 class="section-title">Contacto con lideres</h2>
-      <p class="section-subtitle">Canales de apoyo y comunicacion del barrio.</p>
+      <h2 class="section-title">Contacto general</h2>
+      <p class="section-subtitle">Canales publicos de apoyo y comunicacion del barrio.</p>
       <div class="grid">
         <div class="card contact-box span-6">
           <h3>Contacto principal</h3>
@@ -522,14 +616,14 @@
         </div>
         <div class="card span-6">
           <h3>Nota importante</h3>
-          <p>Antes de publicar informacion personal o directorios, conviene validar autorizacion y cuidar la privacidad de los miembros. Tambien puedes poner el directorio en una version interna privada y dejar esta pagina publica solo con informacion general.</p>
+          <p>Antes de publicar informacion personal, conviene validar autorizacion y cuidar la privacidad de los miembros. Esta seccion puede quedarse solo con medios generales, mientras el directorio completo se maneja de forma interna.</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    Portal del Barrio Chapultepec. Puedes personalizar colores, textos, imagenes y secciones segun las necesidades del barrio.
+    Barrio Chapultepec. Puedes personalizar colores, textos, imagenes y secciones segun las necesidades del barrio.
   </footer>
 </body>
 </html>
