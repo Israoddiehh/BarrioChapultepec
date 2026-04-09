@@ -250,6 +250,42 @@
       color: white;
     }
 
+    .social-card {
+      text-align: center;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .social-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .social-tiktok { background: linear-gradient(135deg, #111827, #374151); }
+    .social-instagram { background: linear-gradient(135deg, #f97316, #db2777); }
+    .social-facebook { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+
+    .social-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .social-link:hover {
+      text-decoration: underline;
+    }
+
     .footer {
       text-align: center;
       color: var(--muted);
@@ -273,6 +309,7 @@
         <a href="#organizaciones">Organizaciones</a>
         <a href="#ministracion">Ministracion</a>
         <a href="#recursos">Recursos</a>
+        <a href="#redes">Redes</a>
         <a href="#directorio">Directorio</a>
         <a href="#lideres">Lideres</a>
       </nav>
@@ -438,6 +475,37 @@
           <div class="directory-item"><strong>Presidencia de Primaria</strong><br>Nombre de la presidenta<br>Telefono: 81 0000 0000</div>
           <div class="directory-item"><strong>Presidencia de Hombres Jovenes</strong><br>Nombre del presidente<br>Telefono: 81 0000 0000</div>
           <div class="directory-item"><strong>Presidencia de Mujeres Jovenes</strong><br>Nombre de la presidenta<br>Telefono: 81 0000 0000</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="redes">
+      <h2 class="section-title">Redes sociales</h2>
+      <p class="section-subtitle">Este espacio ya quedo listo para enlazar los perfiles oficiales del barrio cuando tengas las URLs.</p>
+      <div class="grid">
+        <div class="card social-card span-4">
+          <div>
+            <div class="social-icon social-tiktok">TT</div>
+            <h3>TikTok</h3>
+            <p>Aqui puedes compartir videos cortos con invitaciones, anuncios y mensajes del barrio.</p>
+          </div>
+          <a class="social-link" href="#" aria-label="Proximamente TikTok">Proximamente</a>
+        </div>
+        <div class="card social-card span-4">
+          <div>
+            <div class="social-icon social-instagram">IG</div>
+            <h3>Instagram</h3>
+            <p>Ideal para publicar imagenes, historias, actividades y recordatorios semanales.</p>
+          </div>
+          <a class="social-link" href="#" aria-label="Proximamente Instagram">Proximamente</a>
+        </div>
+        <div class="card social-card span-4">
+          <div>
+            <div class="social-icon social-facebook">FB</div>
+            <h3>Facebook</h3>
+            <p>Puede funcionar como punto central para avisos, eventos y comunicacion con familias del barrio.</p>
+          </div>
+          <a class="social-link" href="#" aria-label="Proximamente Facebook">Proximamente</a>
         </div>
       </div>
     </section>
